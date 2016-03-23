@@ -1,5 +1,6 @@
 package com.example.projeto.minhaagenda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ public class FormularioActivity extends AppCompatActivity {
 
 
     private FormularioHelper helper;
+    private Contato contato;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,12 @@ public class FormularioActivity extends AppCompatActivity {
         }
 
         helper = new FormularioHelper(this);
+        Intent intent = this.getIntent();
+        this.contato = (Contato) intent.getSerializableExtra("ContatoSelecionado");
+
+        if(contato != null){
+            this.helper.setContatoFormulario(contato);
+        }
 
     }
 
