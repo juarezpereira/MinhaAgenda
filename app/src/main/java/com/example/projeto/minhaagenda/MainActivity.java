@@ -48,8 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadListContato() {
-        List<Contato> contatos;
-        ContatoAdaptador contatoAdaptador = new ContatoAdaptador(this,contatos);
+
+        ContatoDAO dao = new ContatoDAO(this);
+
+        List<Contato> contatos = dao.getContatos();
+        ContatoAdaptador contatoAdaptador = new ContatoAdaptador(contatos,this);
 
         this.mListView.setAdapter(contatoAdaptador);
 

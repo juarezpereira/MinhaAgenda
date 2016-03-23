@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:paddingTop="8dp"
     android:layout_width="match_parent"
-    android:layout_height="86dp">
+    android:layout_height="76dp" >
 
     <ImageView
         android:id="@+id/imgContato"
@@ -22,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="72dp"
-        android:layout_marginTop="8dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -41,6 +40,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvEmailContato"
         android:paddingLeft="72dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#0d000000" android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+
 
 
 </RelativeLayout>

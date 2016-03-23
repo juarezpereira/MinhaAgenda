@@ -9,6 +9,9 @@ import android.view.MenuItem;
 
 public class FormularioActivity extends AppCompatActivity {
 
+
+    private FormularioHelper helper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,15 +24,7 @@ public class FormularioActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        Contato contato = new Contato();
-        contato.setNome("Juarez");
-        contato.setEmail("juarezpereira.o@live.com");
-        contato.setSite("Facebook.com/juarezolvr");
-        contato.setTelefone("(88)996073984");
-        contato.setEndereco("Rua João Francisco de Oliveira");
-
-        FormularioHelper helper = new FormularioHelper(this);
-        helper.setContatoFormulario(contato);
+        helper = new FormularioHelper(this);
 
     }
 
@@ -47,6 +42,17 @@ public class FormularioActivity extends AppCompatActivity {
                 NavUtils.navigateUpFromSameTask(FormularioActivity.this);
                 break;
             case R.id.action_confirm:
+
+                Contato contato = helper.getContatoFormulario();
+                ContatoDAO dao = new ContatoDAO(FormularioActivity.this);
+
+                if(contato.getId() == null){
+                    dao.insertContato(contato);
+                }else {
+                    dao.alterContato(contato);
+                }
+                dao.close();
+
                 finish();
                 break;
             default:
